@@ -12,5 +12,5 @@ To use the tool, users input data regarding specific indicators related to false
 This tool is an example of how tailored solutions can be developed to address specific challenges within the cybersecurity domain. As the landscape of cyber threats grows more complex, the need for nuanced and adaptable tools becomes increasingly essential. This tool exemplifies the kind of resource that can aid in navigating these complexities, offering insights and guidance in situations where the lines between true and false allegations may be blurred. It's a step towards empowering professionals to safeguard not only their digital assets but also their professional integrity and work environment.
 
 Regards<b><br>
-Andreas B.<b><br> 
+Andreas<b><br> 
 Sweden<b><br>
