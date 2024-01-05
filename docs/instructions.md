@@ -52,8 +52,8 @@ For instances where you cannot or prefer not to run the program locally, you can
 **Context**: You are a cybersecurity team leader in a large organization. Recently, there have been concerns about the reliability and accuracy of the team's work, leading to potential false accusations against team members. You decide to use this program to evaluate the risk of such accusations and to identify any areas needing improvement.
 
 ### Starting the program
-1. **Launch the Program**: Run the program from your command line or preferred method.
-2. **Choose Evaluation Type**: You're prompted to choose between 'General Evaluation' and 'Cybersecurity Evaluation'. For this scenario, choose 'Cybersecurity Evaluation' by typing '2'.
+1. Run the program from your command line or preferred method.
+2. **Choose Evaluation type**: You're prompted to choose between 'General Evaluation' and 'Cybersecurity Evaluation'. For this scenario, choose 'Cybersecurity Evaluation' by typing '2'.
 
 ### Responding to indicator questions
 The program will present a series of indicators related to common issues that might lead to false accusations in cybersecurity work. For each indicator, think about the current state of your team and work environment before answering:
