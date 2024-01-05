@@ -340,7 +340,7 @@ def evaluate_cybersecurity_indicators(base_tier_weights):
     # Iterating indicators for answers
     max_length = max(len(indicator) for indicator in indicators.keys())
     print('-' * max_length)
-    print("Please answer the following questions"
+    print("Please answer the following questions "
           "with 'yes'(y) or 'no'(n) or 'exit':\n")
     for indicator in indicators.keys():
         while True:
