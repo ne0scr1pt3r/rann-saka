@@ -1,4 +1,4 @@
-"""
+"""
 Project: Rann-Saka
 Description: A comprehensive tool for evaluating unfounded allegations in the Cybersecurity domain.
 Author: ne0scr1pt3r
