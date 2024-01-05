@@ -57,7 +57,7 @@ Sweden<b><br>
 For instances where you cannot or prefer not to run the program locally, you can use a web-based Python interpreter. This is a convenient option as there's no need for any installations, and it works across all operating systems.
 
 ### Steps
-1. Go to a web-based Python interpreter like [Repl.it](https://repl.it/), [PythonAnywhere](https://www.pythonanywhere.com/), or [Jupyter Notebook](https://jupyter.org/try).
+1. Go to a web-based Python interpreter like [Programiz](https://www.programiz.com/python-programming/online-compiler/) or [Repl.it](https://repl.it/).
 2. Copy the Python code from the GitHub repository or upload the `.py` file, if the platform allows.
 3. Run the code directly in the browser.
 
