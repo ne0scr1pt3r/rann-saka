@@ -33,7 +33,7 @@
 3. Change to the directory containing the program: `cd rann-saka`
 4. Run the Python program: `python3 rann-saka.py`
 
-## Running the Program in a Web-Based Python Interpreter
+## Web-based Python Interpreter
 
 For instances where you cannot or prefer not to run the program locally, you can use a web-based Python interpreter. This is a convenient option as there's no need for any installations, and it works across all operating systems.
 
