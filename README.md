@@ -13,7 +13,7 @@ This tool is an example of how tailored solutions can be developed to address sp
 
 The word "rannsaka" in Old Norse means "to investigate" or "to ransack". It is derived from the Old Norse elements "rann" meaning "house" and "saka" meaning "damage". Old Norse was a North Germanic language spoken in Scandinavia and other regions influenced by the Vikings and Norse culture during this time.
 
-For installation and usage instrucitons, make your to read instructions.txt in the docs folder.
+For installation and usage instrucitons, make sure to read instructions.txt in the docs folder.
 
 Regards<b><br>
 Andreas<b><br> 
