@@ -1,4 +1,4 @@
-# Installation instructions 
+# Installation instructions (Be sure to read the Usage instructions further down.)  
 
 ## For Linux
 
