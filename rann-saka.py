@@ -2,7 +2,7 @@
 Project: Rann-Saka
 Description: A comprehensive tool for evaluating unfounded allegations in the Cybersecurity domain.
 Author: ne0scr1pt3r
-GitHub url: https://github.com/ne0scr1pt3r/rann-saka
+GitHub Url: https://github.com/ne0scr1pt3r/rann-saka
 Date: January 1, 2024
 License: MIT License
 Version: 1.0.0
@@ -295,6 +295,46 @@ def evaluate_cybersecurity_indicators(base_tier_weights):
 
         "Public disclosure of unverified claims\n"
         "(Sharing unconfirmed allegations publicly)": (False, 1, 0.8),
+
+        "Unverified reports of security protocol violations\n"
+        "(claims of security procedures being violated without substantial "
+        "evidence)": (False, 3, 1.2),
+
+        "Misinterpreted penetration testing actions\n"
+        "(legitimate penetration testing activities perceived as malicious "
+        "acts)": (False, 3, 1.1),
+
+        "Accusations of neglecting security warnings\n"
+        "(charges of ignoring important security warnings without factual "
+        "basis)": (False, 2, 1.0),
+
+        "Assumed complicity in security breaches\n"
+        "(wrongful assumptions of involvement in security breaches)":
+        (False, 3, 1.3),
+
+        "Unfounded blame for data leaks\n"
+        "(baseless accusations of causing or contributing to data leaks)":
+        (False, 2, 1.2),
+
+        "Allegations of unauthorized network monitoring\n"
+        "(claims of unauthorized surveillance or network monitoring without "
+        "proof)": (False, 2, 1.0),
+
+        "Incorrect attribution of malware introduction\n"
+        "(blaming personnel for introducing malware without evidence)":
+        (False, 3, 1.1),
+
+        "Mistaken identity in cyber attack attribution\n"
+        "(incorrectly identifying individuals as responsible for cyber "
+        "attacks)": (False, 2, 1.2),
+
+        "Claims of inappropriate data access\n"
+        "(allegations of accessing sensitive data without permission, lacking "
+        "verification)": (False, 2, 1.0),
+
+        "Misconstrued intentions in security testing\n"
+        "(misinterpretation of security testing procedures as harmful "
+        "intentions)": (False, 2, 1.1),
     }
 
     # Iterating indicators for answers
@@ -431,15 +471,15 @@ def main():
     }
 
     print("Choose the type of evaluation:")
-    print("1: Cybersecurity Evaluation")
-    print("2: General Evaluation")
+    print("1: General Evaluation")
+    print("2: Cybersecurity Evaluation")
 
     while True:
         choice = input("Enter your choice (1 or 2 or 'exit'): ")
         if choice == '1':
-            evaluate_cybersecurity_indicators(base_tier_weights)
-        elif choice == '2':
             evaluate_general_indicators(base_tier_weights)
+        elif choice == '2':
+            evaluate_cybersecurity_indicators(base_tier_weights)
         elif choice == 'exit':
             break
         else:

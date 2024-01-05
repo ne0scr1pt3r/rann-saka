@@ -78,4 +78,4 @@ After responding to all indicators:
 ### In this scenario
 - The program helps you systematically identify and address areas that could lead to misunderstandings or false accusations.
 - By carefully considering each indicator, you can gain a clearer picture of your team's strengths and potential vulnerabilities.
-- The ultimate goal is to foster a more transparent, efficient, and harmonious work environment, reducing the risk of false accusations and improving overall cybersecurity efficacy.
+- The ultimate goal is to foster a more transparent and efficient work environment, reducing the risk of false accusations and improving overall cybersecurity efficacy.
