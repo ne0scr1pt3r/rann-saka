@@ -49,7 +49,7 @@ For instances where you cannot or prefer not to run the program locally, you can
 
 # Usage instructions 
 
-### Scenario: Evaluating risk of false accusations in a cybersecurity team
+### Example scenario: Evaluating risk of false accusations in a cybersecurity team
 **Context**: You are a cybersecurity team leader in a large organization. Recently, there have been concerns about the reliability and accuracy of the team's work, leading to potential false accusations against team members. You decide to use this program to evaluate the risk of such accusations and to identify any areas needing improvement.
 
 ### Starting the program
