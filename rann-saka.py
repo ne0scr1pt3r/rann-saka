@@ -2,6 +2,7 @@
 Project: Rann-Saka
 Description: A comprehensive tool for evaluating unfounded allegations in the Cybersecurity domain.
 Author: ne0scr1pt3r
+GitHub url: https://github.com/ne0scr1pt3r/rann-saka
 Date: January 1, 2024
 License: MIT License
 Version: 1.0.0
