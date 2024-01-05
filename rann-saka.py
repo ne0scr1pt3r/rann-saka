@@ -415,7 +415,7 @@ def wwrap(text):
     return wrapped_text
 
 
-# This is the main funciton which has the main menu
+# This is the main function which has the main menu
 def main():
     print("""
 ░▒█▀▀▄░█▀▀▄░█▀▀▄░█▀▀▄░░░░▒█▀▀▀█░█▀▀▄░█░▄░█▀▀▄
