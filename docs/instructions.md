@@ -1,4 +1,5 @@
-# Installation instructions (Be sure to read the Usage instructions further down.)  
+# Installation instructions 
+### (Be sure to read the Usage instructions further down.)  
 
 ## For Linux
 
@@ -46,7 +47,7 @@ For instances where you cannot or prefer not to run the program locally, you can
 - Web-based interpreters may have limitations, especially regarding external library support and computational resources.
 - Ensure the code does not contain any sensitive data or operations, as web-based environments may not be secure.
 
-## Usage instructions 
+# Usage instructions 
 
 ### Scenario: Evaluating risk of false accusations in a cybersecurity team
 **Context**: You are a cybersecurity team leader in a large organization. Recently, there have been concerns about the reliability and accuracy of the team's work, leading to potential false accusations against team members. You decide to use this program to evaluate the risk of such accusations and to identify any areas needing improvement.
