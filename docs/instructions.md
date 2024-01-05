@@ -58,19 +58,19 @@ For instances where you cannot or prefer not to run the program locally, you can
 ### Responding to indicator questions
 The program will present a series of indicators related to common issues that might lead to false accusations in cybersecurity work. For each indicator, think about the current state of your team and work environment before answering:
 
-- **Example Indicator**: "Inconsistent Testimony from Team Members (Differing accounts of events from team members)": 
-    - **How to Think About It**: Reflect on recent team meetings or incident reports. Have there been instances where team members gave conflicting information about security events? If yes, answer 'yes'. If such instances are rare or nonexistent, answer 'no'.
+- **Example indicator**: "Inconsistent Testimony from Team Members (Differing accounts of events from team members)": 
+    - **How to think**: Reflect on recent team meetings or incident reports. Have there been instances where team members gave conflicting information about security events? If yes, answer 'yes'. If such instances are rare or nonexistent, answer 'no'.
 
-- **Continuing Through Indicators**: Proceed through each indicator, applying the same thoughtful consideration. Your goal is to assess honestly whether each statement applies to your team's situation.
+Proceed through each indicator, applying the same thoughtful consideration. Your goal is to assess honestly whether each statement applies to your team's situation.
 
 ### Completing the evaluation
 After responding to all indicators:
 
-3. **Review the Results**: The program will analyze your responses and provide a summary of the risk level for false accusations against your team. It may highlight specific areas where misunderstandings or miscommunications are occurring.
+3. **Reviewing the results**: The program will analyze your responses and provide a summary of the risk level for false accusations against your team. It may highlight specific areas where misunderstandings or miscommunications are occurring.
 
 ### Using the results
-- **Develop Action Plans**: Use the insights from the evaluation to address identified issues. This might involve additional training, improving communication channels, or revising protocols.
-- **Follow-Up Evaluations**: Regularly use this program to track improvements over time or to quickly identify new issues as they arise.
+- **Develop a plan**: Use the insights from the evaluation to address identified issues. This might involve additional training, improving communication channels, or revising protocols.
+- **Follow-Up your evaluations**: Regularly use this program to track improvements over time or to quickly identify new issues as they arise.
 
 ---
 
