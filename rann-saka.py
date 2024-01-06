@@ -465,7 +465,7 @@ def get_next_filename(prefix):
             return filename
 
 
-# Function for textwrapping
+# Textwrapping
 def wwrap(text):
     wrapped_text = textwrap.fill(text, width=79)
     return wrapped_text
