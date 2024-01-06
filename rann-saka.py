@@ -178,15 +178,15 @@ def evaluate_general_indicators(base_tier_weights):
     total_indicators = len(indicators)
     true_indicators = sum(1 for value, _, _ in indicators.values() if value)
     summary = (
-        "- Indicator Analysis:\n"
+        "- Analysis:\n"
         f"    Out of a total of {total_indicators} indicators analyzed, {true_indicators} "
         f"(or {weighted_percentage:.2f}% of the maximum possible score) were identified as true. "
         f"The weighted sum of these indicators is {weighted_sum:.2f}.\n\n"
-        "- Potential Issues Indicated:\n"
+        "- Potential issues:\n"
         "    The analysis suggests there might be issues related to biased feedback and false accusations. "
         f"{true_indicators} out of {total_indicators} indicators of these issues are present, "
         "indicating a significant likelihood of issues in the evaluated context.\n\n"
-        "- Severity Classification of Indicators:\n"
+        "- Severity classification:\n"
         f"  - Less Severe: {true_indicators_tier_1}\n"
         f"  - Moderately Severe: {true_indicators_tier_2}\n"
         f"  - Most Severe: {true_indicators_tier_3}\n\n"
@@ -370,7 +370,7 @@ def evaluate_cybersecurity_indicators(base_tier_weights):
     true_indicators = sum(1 for value, _, _ in indicators.values() if value)
 
     summary = (
-        "• Indicator Overview:\n"
+        "• Overview:\n"
         f"• Of {total_indicators} indicators reviewed for potential false accusations against "
         f"cybersecurity and penetration testing personnel, {true_indicators} have been flagged as concerns, "
         f"accounting for {weighted_percentage:.2f}% of the maximum possible score.\n"
@@ -431,10 +431,25 @@ def calculate_hybrid_score(indicators, base_tier_weights):
 def save_results_to_file(current_time, summary, weighted_percentage, indicators, prefix):
     line = 50 * '-'
     filename = get_next_filename(prefix)
+
+    minor_indicators = [indicator for indicator, (value, tier, _) in indicators.items() if value and tier == 1]
+    moderate_indicators = [indicator for indicator, (value, tier, _) in indicators.items() if value and tier == 2]
+    most_severe_indicators = [indicator for indicator, (value, tier, _) in indicators.items() if value and tier == 3]
     with open(filename, 'w') as file:
         file.write(f"{current_time}\n\n")
-        file.write(f"Summary:\n{summary}\n")
-        file.write(f"\nPercentage of True Indicators:{weighted_percentage:.2f}%\n\n")
+        file.write(f"-- Summary --\n{summary}\n")
+        file.write(f"\n-- Percentage score --{weighted_percentage:.2f}%\n\n")
+        file.write("-- Severity classification of indicators --\n\n")
+        file.write("Less severe indicators:\n")
+        for indicator in minor_indicators:
+            file.write(f"\n{indicator}\n")
+        file.write(f"{line}\n\nModerately severe indicators:\n")
+        for indicator in moderate_indicators:
+            file.write(f"\n{indicator}\n")
+        file.write(f"{line}\n\nMost severe indicators:\n")
+        for indicator in most_severe_indicators:
+            file.write(f"\n{indicator}\n")
+        file.write("\n\n-- All indicators with all the answers --\n")
         for indicator, (value, _, _) in indicators.items():
             file.write(f"{line}\n{indicator}\n: {'Yes' if value else 'No'}\n")
     print(f"Results saved to {filename}")
