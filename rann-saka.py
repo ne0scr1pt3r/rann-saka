@@ -438,15 +438,15 @@ def save_results_to_file(current_time, summary, weighted_percentage, indicators,
     with open(filename, 'w') as file:
         file.write(f"{current_time}\n\n")
         file.write(f"-- Summary --\n{summary}\n")
-        file.write(f"\n-- Percentage score --{weighted_percentage:.2f}%\n\n")
+        file.write(f"-- Percentage score -- {weighted_percentage:.2f}%\n\n")
         file.write("-- Severity classification of indicators --\n\n")
-        file.write("Less severe indicators:\n")
+        file.write("- Less severe indicators -\n")
         for indicator in minor_indicators:
             file.write(f"\n{indicator}\n")
-        file.write(f"{line}\n\nModerately severe indicators:\n")
+        file.write(f"{line}\n\n- Moderately severe indicators -\n")
         for indicator in moderate_indicators:
             file.write(f"\n{indicator}\n")
-        file.write(f"{line}\n\nMost severe indicators:\n")
+        file.write(f"{line}\n\n- Most severe indicators -\n")
         for indicator in most_severe_indicators:
             file.write(f"\n{indicator}\n")
         file.write("\n\n-- All indicators with all the answers --\n")
