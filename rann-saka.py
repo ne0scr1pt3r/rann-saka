@@ -37,6 +37,18 @@ import textwrap
 
 current_time = time.ctime()
 
+# conditional non-linear weight adjustment
+def conditional_weights_non_linear(key_indicator, related_indicators, base_factor, indicators):
+    if indicators[key_indicator][0]:
+        for ind in related_indicators:
+            value, tier, weight = indicators[ind]
+            indicators[ind] = (value, tier, weight * (base_factor ** tier))
+    else:
+        for ind in related_indicators:
+            value, tier, weight = indicators[ind]
+            if value:
+                indicators[ind] = (value, tier, weight * ((base_factor - 0.25) ** tier))
+
 
 # Indicators for general evaluation
 def evaluate_general_indicators(base_tier_weights):
@@ -213,161 +225,143 @@ def evaluate_general_indicators(base_tier_weights):
 # Indicators for specific cybersecurity evaluation
 def evaluate_cybersecurity_indicators(base_tier_weights):
     indicators = {
-        "Unsubstantiated accusations of malicious activity\n"
-        "(Accusations without concrete proof)": (False, 3, 1.2),
-
-        "Discrepancies in incident reports\n"
-        "(Conflicting information in reports of security incidents)":
-        (False, 2, 1.1),
-
-        "Inconsistent evidence of unauthorized access\n"
-        "(Conflicting evidence or lack thereof for access breaches)":
-        (False, 2, 1.0),
-
-        "Claims of data tampering without proof\n"
-        "(Allegations of data alteration lacking substantiation)":
-        (False, 2, 1.0),
-
-        "Allegations of misuse of privileges\n"
-        "(Charges of privilege abuse without corroborating evidence)":
-        (False, 3, 1.1),
-
-        "Inconclusive or misinterpreted audit trails\n"
-        "(Audit data that is unclear or misread)":
-        (False, 1, 0.9),
-
-        "Contradictory witness statements\n"
-        "(Conflicting accounts from different individuals)":
-        (False, 2, 1.2),
-
-        "Threats of legal action without basis\n"
-        "(Unsupported legal threats over alleged actions)":
-        (False, 3, 1.3),
-
-        "Lack of corroboration in security logs\n"
-        "(Security logs that do not support the allegations made)":
-        (False, 2, 1.2),
-
-        "Vague or ambiguous forensic analysis\n"
-        "(Forensic findings that are unclear or open to interpretation)":
-        (False, 2, 1.0),
-
-        "Inconsistent testimony from team members\n"
-        "(Differing accounts of events from team members)": (False, 2, 0.9),
-
-        "Insufficient explanation of tools used\n"
-        "(Lack of clarity about the tools used in penetration testing)":
-        (False, 1, 0.8),
-
-        "Speculative conclusions in investigation reports\n"
-        "(Conclusions based more on guesswork than evidence)": (False, 2, 0.9),
-
-        "Accusations of bypassing protocols without evidence\n"
-        "(Charges of ignoring procedures without proof)": (False, 1, 0.7),
-
-        "Timing of security alerts and incidents\n"
-        "(Suspicious timing of alerts that may imply ulterior motives)":
-        (False, 2, 1.2),
-
-        "Impact of accusations on professional reputation\n"
-        "(Allegations that could harm one's professional standing)":
-        (False, 3, 1.1),
-
-        "Unsatisfactory responses to methodology clarification requests\n"
-        "(Responses to inquiries about methods used are inadequate or \n"
-        "evasive, potentially leading to misunderstandings or "
-        "false accusations)": (False, 2, 0.9),
-
-        "Generalizations in accusation without specifics\n"
-        "(Broad accusations lacking specific details)": (False, 2, 1.0),
-
-        "Frequency of unsubstantiated claims\n"
-        "(Regular occurrence of claims without backing evidence)":
-        (False, 1, 0.9),
-
-        "Inconsistency in accusation details\n"
-        "(Variances in the details or descriptions of accusations)":
-        (False, 2, 1.0),
-
-        "Personal motives in professional accusations\n"
-        "(Suspected personal biases influencing professional charges)":
-        (False, 2, 1.0),
-
-        "Public disclosure of unverified claims\n"
-        "(Sharing unconfirmed allegations publicly)": (False, 1, 0.8),
-
-        "Unverified reports of security protocol violations\n"
-        "(claims of security procedures being violated without substantial "
-        "evidence)": (False, 3, 1.2),
-
-        "Misinterpreted penetration testing actions\n"
-        "(legitimate penetration testing activities perceived as malicious "
-        "acts)": (False, 3, 1.1),
-
-        "Accusations of neglecting security warnings\n"
-        "(charges of ignoring important security warnings without factual "
-        "basis)": (False, 2, 1.0),
-
-        "Assumed complicity in security breaches\n"
-        "(wrongful assumptions of involvement in security breaches)":
-        (False, 3, 1.3),
-
-        "Unfounded blame for data leaks\n"
-        "(baseless accusations of causing or contributing to data leaks)":
-        (False, 2, 1.2),
-
-        "Allegations of unauthorized network monitoring\n"
-        "(claims of unauthorized surveillance or network monitoring without "
-        "proof)": (False, 2, 1.0),
-
-        "Incorrect attribution of malware introduction\n"
-        "(blaming personnel for introducing malware without evidence)":
-        (False, 3, 1.1),
-
-        "Mistaken identity in cyber attack attribution\n"
-        "(incorrectly identifying individuals as responsible for cyber "
-        "attacks)": (False, 2, 1.2),
-
-        "Claims of inappropriate data access\n"
-        "(allegations of accessing sensitive data without permission, lacking "
-        "verification)": (False, 2, 1.0),
-
-        "Misconstrued intentions in security testing\n"
-        "(misinterpretation of security testing procedures as harmful "
-        "intentions)": (False, 2, 1.1),
+        # authorization and access control
+        'Authorization and access control': {
+            "Unsubstantiated accusations of malicious activity\n"
+            "(Accusations without concrete proof)": (False, 3, 1.2),
+            "Inconsistent evidence of unauthorized access\n"
+            "(Conflicting evidence or lack thereof for access breaches)":
+            (False, 2, 1.0),
+            "Claims of data tampering without proof\n"
+            "(Allegations of data alteration lacking substantiation)":
+            (False, 2, 1.0),
+            "Allegations of unauthorized network monitoring\n"
+            "(claims of unauthorized surveillance or network monitoring without "
+            "proof)": (False, 2, 1.0),
+            "Claims of inappropriate data access\n"
+            "(allegations of accessing sensitive data without permission, lacking "
+            "verification)": (False, 2, 1.0),
+            "Allegations of misuse of privileges\n"
+            "(Charges of privilege abuse without corroborating evidence)":
+            (False, 3, 1.1),
+            "Accusations of bypassing protocols without evidence\n"
+            "(Charges of ignoring procedures without proof)": (False, 1, 0.7),
+            "Unverified reports of security protocol violations\n"
+            "(claims of security procedures being violated without substantial "
+            "evidence)": (False, 3, 1.2),
+            "Misinterpreted penetration testing actions\n"
+            "(legitimate penetration testing activities perceived as malicious "
+            "acts)": (False, 3, 1.1),
+            "Insufficient explanation of tools used\n"
+            "(Lack of clarity about the tools used in penetration testing)":
+            (False, 1, 0.8),
+        },
+        # reporting and documentation
+        'Reporting and documentation': {
+            "Discrepancies in incident reports\n"
+            "(Conflicting information in reports of security incidents)":
+            (False, 2, 1.1),
+            "Lack of corroboration in security logs\n"
+            "(Security logs that do not support the allegations made)":
+            (False, 2, 1.2),
+            "Vague or ambiguous forensic analysis\n"
+            "(Forensic findings that are unclear or open to interpretation)":
+            (False, 2, 1.0),
+            "Speculative conclusions in investigation reports\n"
+            "(Conclusions based more on guesswork than evidence)": (False, 2, 0.9),
+            "Incorrect attribution of malware introduction\n"
+            "(blaming personnel for introducing malware without evidence)":
+            (False, 3, 1.1),
+            "Inconclusive or misinterpreted audit trails\n"
+            "(Audit data that is unclear or misread)":
+            (False, 1, 0.9),
+        },
+        # conduct and misunderstandings
+        'Conduct and misunderstandings': {
+            "Unsatisfactory responses to methodology clarification requests\n"
+            "(Responses to inquiries about methods used are inadequate or \n"
+            "evasive, potentially leading to misunderstandings or "
+            "false accusations)": (False, 2, 0.9),
+            "Generalizations in accusation without specifics\n"
+            "(Broad accusations lacking specific details)": (False, 2, 1.0),
+            "Misconstrued intentions in security testing\n"
+            "(misinterpretation of security testing procedures as harmful "
+            "intentions)": (False, 2, 1.1),
+            "Public disclosure of unverified claims\n"
+            "(Sharing unconfirmed allegations publicly)": (False, 1, 0.8),
+            "Threats of legal action without basis\n"
+            "(Unsupported legal threats over alleged actions)":
+            (False, 3, 1.3),
+        },
+        # team dynamics and communication
+        'Team dynamics and communication': {
+            "Contradictory witness statements\n"
+            "(Conflicting accounts from different individuals)":
+            (False, 2, 1.2),
+            "Inconsistent testimony from team members\n"
+            "(Differing accounts of events from team members)": (False, 2, 0.9),
+            "Personal motives in professional accusations\n"
+            "(Suspected personal biases influencing professional charges)":
+            (False, 2, 1.0),
+            "Inconsistency in accusation details\n"
+            "(Variances in the details or descriptions of accusations)":
+            (False, 2, 1.0),
+            "Mistaken identity in cyber attack attribution\n"
+            "(incorrectly identifying individuals as responsible for cyber "
+            "attacks)": (False, 2, 1.2),
+            "Frequency of unsubstantiated claims\n"
+            "(Regular occurrence of claims without backing evidence)":
+            (False, 1, 0.9),
+            "Timing of security alerts and incidents\n"
+            "(Suspicious timing of alerts that may imply ulterior motives)":
+            (False, 2, 1.2),
+            "Impact of accusations on professional reputation\n"
+            "(Allegations that could harm one's professional standing)":
+            (False, 3, 1.1),
+            "Accusations of neglecting security warnings\n"
+            "(charges of ignoring important security warnings without factual "
+            "basis)": (False, 2, 1.0),
+            "Assumed complicity in security breaches\n"
+            "(wrongful assumptions of involvement in security breaches)":
+            (False, 3, 1.3),
+            "Unfounded blame for data leaks\n"
+            "(baseless accusations of causing or contributing to data leaks)":
+            (False, 2, 1.2),
+        }
     }
 
     # Iterating indicators for answers
-    max_length = max(len(indicator) for indicator in indicators.keys())
+    max_length = max(len(indicator) for category in indicators.values() for indicator in category)
     print('-' * max_length)
     print("Please answer the following questions "
           "with 'yes'(y) or 'no'(n) or 'exit':\n")
-    for indicator in indicators.keys():
-        while True:
-            response = input(f"{indicator}: ").strip().lower()
-            if response in ['yes', 'y']:
-                indicators[indicator] = (True, indicators[indicator][1], indicators[indicator][2])
-                break
-            elif response in ['no', 'n']:
-                indicators[indicator] = (False, indicators[indicator][1], indicators[indicator][2])
-                break
-            elif response == 'exit':
-                print("Program exited by user.")
-                sys.exit()
-            else:
-                print("Invalid input. Please answer with 'yes'(y) or 'no'(n) or 'exit'.")
-        print("-" * max_length)
+    for category, cat_indicators in indicators.items():
+        print(f"Category: {category}")
+        for indicator, (_, tier, weight) in cat_indicators.items():
+            while True:
+                response = input(f"{indicator}: ").strip().lower()
+                if response in ['yes', 'y']:
+                    cat_indicators[indicator] = (True, tier, weight)
+                    break
+                elif response in ['no', 'n']:
+                    cat_indicators[indicator] = (False, tier, weight)
+                    break
+                elif response == 'exit':
+                    print("Program exited by user.")
+                    sys.exit()
+                else:
+                    print("Invalid input. Please answer with 'yes'(y) or 'no'(n) or 'exit'.")
+            print("-" * max_length)
 
+    # conditional_weights_non_linear('')
     weighted_sum, weighted_percentage = calculate_hybrid_score(indicators, base_tier_weights)
-    true_indicators_tier_1 = sum(1 for value, tier, _ in indicators.values()
-                                 if value and tier == 1)
-    true_indicators_tier_2 = sum(1 for value, tier, _ in indicators.values()
-                                 if value and tier == 2)
-    true_indicators_tier_3 = sum(1 for value, tier, _ in indicators.values()
-                                 if value and tier == 3)
+    true_indicators_tier_1 = sum(1 for category in indicators.values() for _, tier, _ in category.values() if tier == 1)
+    true_indicators_tier_2 = sum(1 for category in indicators.values() for _, tier, _ in category.values() if tier == 2)
+    true_indicators_tier_3 = sum(1 for category in indicators.values() for _, tier, _ in category.values() if tier == 3)
+
     # Summary
-    total_indicators = len(indicators)
-    true_indicators = sum(1 for value, _, _ in indicators.values() if value)
+    total_indicators = sum(len(cat_indicators) for cat_indicators in indicators.values())
+    true_indicators = sum(1 for category in indicators.values() for value, _, _ in category.values() if value)
 
     summary = (
         "• Overview:\n"
