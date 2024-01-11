@@ -387,7 +387,7 @@ def evaluate_cybersecurity_indicators(base_tier_weights):
         "clear documentation, and fair assessment practices in cybersecurity "
         "environments.\n"
         "• Particular attention must be given to severe false allegations, requiring thorough "
-    "investigation to ensure accountability and maintain integrity within the team.\n"
+        "investigation to ensure accountability and maintain integrity within the team.\n"
         "• Emphasizing continuous education on the evolving nature of cybersecurity "
         "threats and the importance of a supportive team culture is crucial to "
         "mitigate these issues.\n"
