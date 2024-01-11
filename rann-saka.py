@@ -352,8 +352,11 @@ def evaluate_cybersecurity_indicators(base_tier_weights):
                 else:
                     print("Invalid input. Please answer with 'yes'(y) or 'no'(n) or 'exit'.")
             print("-" * max_length)
+        key_indicator = next(iter(cat_indicators))
+        related_indicators = list(cat_indicators.keys())[1:]
 
-    # conditional_weights_non_linear('')
+        conditional_weights_non_linear(key_indicator, related_indicators, 1.5, cat_indicators)
+
     weighted_sum, weighted_percentage = calculate_hybrid_score(indicators, base_tier_weights)
     true_indicators_tier_1 = sum(1 for category in indicators.values() for _, tier, _ in category.values() if tier == 1)
     true_indicators_tier_2 = sum(1 for category in indicators.values() for _, tier, _ in category.values() if tier == 2)
@@ -412,11 +415,13 @@ def evaluate_cybersecurity_indicators(base_tier_weights):
 def calculate_hybrid_score(indicators, base_tier_weights):
     weighted_sum = sum(
         base_tier_weights[tier] * weight_modifier
-        for value, tier, weight_modifier in indicators.values() if value
+        for category in indicators.values()
+        for _, tier, weight_modifier in category.values() if _
     )
     max_possible_score = sum(
         base_tier_weights[tier] * weight_modifier
-        for _, tier, weight_modifier in indicators.values()
+        for category in indicators.values()
+        for _, tier, weight_modifier in category.values()
     )
     weighted_percentage = (weighted_sum / max_possible_score) * 100
     return weighted_sum, weighted_percentage
@@ -426,26 +431,39 @@ def save_results_to_file(current_time, summary, weighted_percentage, indicators,
     line = 50 * '-'
     filename = get_next_filename(prefix)
 
-    minor_indicators = [indicator for indicator, (value, tier, _) in indicators.items() if value and tier == 1]
-    moderate_indicators = [indicator for indicator, (value, tier, _) in indicators.items() if value and tier == 2]
-    most_severe_indicators = [indicator for indicator, (value, tier, _) in indicators.items() if value and tier == 3]
+    minor_indicators = []
+    moderate_indicators = []
+    most_severe_indicators = []
+
+    # Iterate through each category and its indicators
+    for category, cat_indicators in indicators.items():
+        for indicator, (value, tier, _) in cat_indicators.items():
+            if value and tier == 1:
+                minor_indicators.append(f"{category} - {indicator}")
+            elif value and tier == 2:
+                moderate_indicators.append(f"{category} - {indicator}")
+            elif value and tier == 3:
+                most_severe_indicators.append(f"{category} - {indicator}")
+
     with open(filename, 'w') as file:
         file.write(f"{current_time}\n\n")
-        file.write(f"-- Summary --\n{summary}\n")
+        file.write(f"-- Summary --\n{summary}\n\n")
         file.write(f"-- Percentage score -- {weighted_percentage:.2f}%\n\n")
         file.write("-- Severity classification of indicators --\n\n")
         file.write("- Less severe indicators -\n")
         for indicator in minor_indicators:
-            file.write(f"\n{indicator}\n")
+            file.write(f"{indicator}\n")
         file.write(f"{line}\n\n- Moderately severe indicators -\n")
         for indicator in moderate_indicators:
-            file.write(f"\n{indicator}\n")
+            file.write(f"{indicator}\n")
         file.write(f"{line}\n\n- Most severe indicators -\n")
         for indicator in most_severe_indicators:
-            file.write(f"\n{indicator}\n")
+            file.write(f"{indicator}\n")
         file.write("\n\n-- All indicators with all the answers --\n")
-        for indicator, (value, _, _) in indicators.items():
-            file.write(f"{line}\n{indicator}\n: {'Yes' if value else 'No'}\n")
+        for category, cat_indicators in indicators.items():
+            for indicator, (value, _, _) in cat_indicators.items():
+                file.write(f"{line}\n{category} - {indicator}\n: {'Yes' if value else 'No'}\n")
+
     print(f"Results saved to {filename}")
 
 
