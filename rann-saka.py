@@ -55,142 +55,115 @@ def conditional_weights_non_linear(key_indicator, related_indicators, base_facto
 # Indicators for general evaluation
 def evaluate_general_indicators(base_tier_weights):
     indicators = {
-        "Consistent negative feedback\n(Frequent negative feedback, "
-        "regardless of performance or improvement)": (False, 3, 1.2),
+        # Feedback and communication
+        'Feedback and communication': {
+            "Consistent negative feedback\n(Frequent negative feedback, "
+            "regardless of performance or improvement)": (False, 3, 1.3),
+            "Vague or non-specific criticism\n(Criticism that lacks clear and "
+            "actionable points)": (False, 2, 1.0),
+            "Personal rather than professional feedback\n(Feedback focuses on "
+            "personal traits rather than professional skills)": (False, 2, 1.0),
+            "Contradictory information\n(Receiving conflicting instructions or "
+            "feedback)": (False, 3, 1.1),
+            "Inconsistency over time\n(Feedback or expectations that change "
+            "unpredictably over time)": (False, 2, 1.0),
+            "Contradiction with documented facts\n(Feedback or claims that "
+            "contradict documented evidence)": (False, 3, 1.2),
+            "Discrepancy with colleague feedback\n(Significant differences "
+            "between feedback from different colleagues)": (False, 2, 0.9),
+            "Unwillingness to provide details\n(Reluctance to give detailed "
+            "information or clarification)": (False, 1, 0.8),
+            "Feedback based on rumor or speculation\n(Feedback that is not "
+            "based on direct observation or evidence)": (False, 2, 0.9),
+            "Unconstructive feedback\n(Feedback that doesn't offer a clear path "
+            "to improvement)": (False, 2, 1.0),
+            "Frequent criticism\n(Regular and persistent criticism)": (False, 1, 0.9),
+            "Inconsistency\n(Lack of consistency in feedback or expectations)": (False, 2, 1.0),
+            "Personal, not professional\n(Focus on personal attributes rather "
+            "than professional performance)": (False, 2, 1.0),
+            "Public criticism\n(Criticism delivered in a public setting)": (False, 1, 0.8),
+            "No recognition of improvement\n(Ignoring or not acknowledging "
+            "improvements made)": (False, 2, 0.9),
+            "Feedback contrary to previous evaluations\n(Feedback that "
+            "contradicts earlier evaluations)": (False, 3, 1.2)
+        },
+        # career impact and professionalism
+        'Career impact and professionalism': {
+            "Decline in job offers\n(Noticeable decrease in job offers or "
+            "opportunities)": (False, 3, 1.4),
+            "Impact on career opportunities\n(Feedback that adversely affects "
+            "future career prospects)": (False, 3, 1.1),
+            "Isolation from collaborative opportunities\n(Exclusion from "
+            "opportunities for teamwork and collaboration)": (False, 1, 0.8),
+            "Exclusion from professional development\n(Being left out of "
+            "professional growth and development opportunities)": (False, 1, 0.7),
+            "Impact on morale\n(Feedback that negatively affects morale)": (False, 2, 0.9),
+            "Negative feedback on areas outside of their oversight\n(Criticism "
+            "about aspects outside the employee's control or responsibility)": (False, 1, 0.7),
+            "Timing of the accusations or feedback\n(Feedback timing that may "
+            "have ulterior motives or context)": (False, 1, 0.8)
+        },
+        # authenticity and credibility
+        'Authenticity and credibility': {
+            "Lack of credibility\n(Feedback or instructions lack grounding in "
+            "facts or reality)": (False, 3, 1.3),
+            "Unverifiable or exaggerated claims\n(Claims or accusations that "
+            "cannot be substantiated)": (False, 2, 1.0),
+            "Lack of objective evidence\n(Feedback not supported by objective "
+            "facts or data)": (False, 2, 1.0),
+            "Unusual communication from prospective employers\n(Unexpected or "
+            "unconventional communication styles from potential employers)": (False, 1, 0.9),
+            "Legal action threats\n(Threats of legal action in response to "
+            "actions or performance)": (False, 3, 1.3),
+            "Direct warnings\n(Explicit warnings about performance or behavior)": (False, 3, 1.2),
+            "Excessive focus on minor errors\n(Overemphasis on small mistakes)": (False, 2, 0.9),
+            "Ignoring context\n(Overlooking the context or circumstances of "
+            "actions or performance)": (False, 2, 0.9)
+        },
 
-        "Contradictory information\n(Receiving conflicting instructions or "
-        "feedback)": (False, 3, 1.1),
-
-        "Vague or non-specific criticism\n(Criticism that lacks clear and "
-        "actionable points)": (False, 2, 1.0),
-
-        "Personal rather than professional feedback\n(Feedback focuses on "
-        "personal traits rather than professional skills)": (False, 2, 1.0),
-
-        "Lack of credibility\n(Feedback or instructions lack grounding in "
-        "facts or reality)": (False, 3, 1.1),
-
-        "Unusual communication from prospective employers\n(Unexpected or "
-        "unconventional communication styles from potential employers)":
-        (False, 1, 0.9),
-
-        "Decline in job offers\n(Noticeable decrease in job offers or "
-        "opportunities)": (False, 3, 1.4),
-
-        "Direct warnings\n(Explicit warnings about performance or behavior)":
-        (False, 3, 1.2),
-
-        "Legal action threats\n(Threats of legal action in response to "
-        "actions or performance)": (False, 3, 1.3),
-
-        "Inconsistencies over time\n(Feedback or expectations that change "
-        "unpredictably over time)": (False, 2, 1.0),
-
-        "Contradiction with documented facts\n(Feedback or claims that "
-        "contradict documented evidence)": (False, 3, 1.2),
-
-        "Unverifiable or exaggerated claims\n(Claims or accusations that "
-        "cannot be substantiated)": (False, 2, 1.0),
-
-        "Discrepancy with colleague feedback\n(Significant differences "
-        "between feedback from different colleagues)": (False, 2, 0.9),
-
-        "Unwillingness to provide details\n(Reluctance to give detailed "
-        "information or clarification)": (False, 1, 0.8),
-
-        "Feedback based on rumor or speculation\n(Feedback that is not "
-        "based on direct observation or evidence)": (False, 2, 0.9),
-
-        "Negative feedback on areas outside of their oversight\n(Criticism "
-        "about aspects outside the employee's control or responsibility)":
-        (False, 1, 0.7),
-
-        "Timing of the accusations or feedback\n(Feedback timing that may "
-        "have ulterior motives or context)": (False, 1, 0.8),
-
-        "Impact on career opportunities\n(Feedback that adversely affects "
-        "future career prospects)": (False, 3, 1.1),
-
-        "Response to clarification requests\n(How feedback providers respond "
-        "to requests for clarification)": (False, 2, 0.9),
-
-        "Unconstructive feedback\n(Feedback that doesn't offer a clear path "
-        "to improvement)": (False, 2, 1.0),
-
-        "Frequent criticism\n(Regular and persistent criticism)":
-        (False, 1, 0.9),
-
-        "Inconsistency\n(Lack of consistency in feedback or expectations)":
-        (False, 2, 1.0),
-
-        "Personal, not professional\n(Focus on personal attributes rather "
-        "than professional performance)": (False, 2, 1.0),
-
-        "Public criticism\n(Criticism delivered in a public setting)":
-        (False, 1, 0.8),
-
-        "No recognition of improvement\n(Ignoring or not acknowledging "
-        "improvements made)": (False, 2, 0.9),
-
-        "Comparisons with others\n(Unfavorable comparisons with other "
-        "colleagues)": (False, 1, 0.7),
-
-        "Ignoring context\n(Overlooking the context or circumstances of "
-        "actions or performance)": (False, 2, 0.9),
-
-        "Lack of support\n(Insufficient support or resources for the role)":
-        (False, 1, 0.8),
-
-        "Impact on morale\n(Feedback that negatively affects morale)":
-        (False, 2, 0.9),
-
-        "Excessive focus on minor errors\n(Overemphasis on small mistakes)":
-        (False, 2, 0.9),
-
-        "Lack of objective evidence\n(Feedback not supported by objective "
-        "facts or data)": (False, 2, 1.0),
-
-        "Feedback contrary to previous evaluations\n(Feedback that "
-        "contradicts earlier evaluations)": (False, 3, 1.2),
-
-        "Isolation from collaborative opportunities\n(Exclusion from "
-        "opportunities for teamwork and collaboration)": (False, 1, 0.8),
-
-        "Exclusion from professional development\n(Being left out of "
-        "professional growth and development opportunities)":
-        (False, 1, 0.7)
+        # Management and Support
+        'Management and Support': {
+            "Lack of support\n(Insufficient support or resources for the role)": (False, 1, 1.0),
+            "Comparisons with others\n(Unfavorable comparisons with other "
+            "colleagues)": (False, 1, 0.7)
+        }
     }
 
     # Iterating general indicators for answers
-    max_length = max(len(indicator) for indicator in indicators.keys())
+    max_length = max(len(indicator) for category in indicators.values() for indicator in category)
     print('-' * max_length)
-    print("Please answer the following questions with 'yes'(y) or 'no'(n) or 'exit':\n")
-    for indicator in indicators.keys():
-        while True:
-            response = input(f"{indicator}: ").strip().lower()
-            if response in ['yes', 'y']:
-                indicators[indicator] = (True, indicators[indicator][1], indicators[indicator][2])
-                break
-            elif response in ['no', 'n']:
-                indicators[indicator] = (False, indicators[indicator][1], indicators[indicator][2])
-                break
-            elif response == 'exit':
-                print("Program exited by user.")
-                sys.exit()
-            else:
-                print("Invalid input. Please answer with 'yes'(y) or 'no'(n) or 'exit'.")
-        print("-" * max_length)
+    print("Please answer the following questions "
+          "with 'yes'(y) or 'no'(n) or 'exit':\n")
+    for category, cat_indicators in indicators.items():
+        print(f"Category: {category}")
+        for indicator, (_, tier, weight) in cat_indicators.items():
+            while True:
+                response = input(f"{indicator}: ").strip().lower()
+                if response in ['yes', 'y']:
+                    cat_indicators[indicator] = (True, tier, weight)
+                    break
+                elif response in ['no', 'n']:
+                    cat_indicators[indicator] = (False, tier, weight)
+                    break
+                elif response == 'exit':
+                    print("Program exited by user.")
+                    sys.exit()
+                else:
+                    print("Invalid input. Please answer with 'yes'(y) or 'no'(n) or 'exit'.")
+            print("-" * max_length)
+        key_indicator = next(iter(cat_indicators))
+        related_indicators = list(cat_indicators.keys())[1:]
+
+        conditional_weights_non_linear(key_indicator, related_indicators, 1.5, cat_indicators)
 
     weighted_sum, weighted_percentage = calculate_hybrid_score(indicators, base_tier_weights)
-    true_indicators_tier_1 = sum(1 for value, tier, _ in indicators.values()
-                                 if value and tier == 1)
-    true_indicators_tier_2 = sum(1 for value, tier, _ in indicators.values()
-                                 if value and tier == 2)
-    true_indicators_tier_3 = sum(1 for value, tier, _ in indicators.values()
-                                 if value and tier == 3)
+    true_indicators_tier_1 = sum(1 for category in indicators.values() for _, tier, _ in category.values() if tier == 1)
+    true_indicators_tier_2 = sum(1 for category in indicators.values() for _, tier, _ in category.values() if tier == 2)
+    true_indicators_tier_3 = sum(1 for category in indicators.values() for _, tier, _ in category.values() if tier == 3)
     # Summary
-    total_indicators = len(indicators)
-    true_indicators = sum(1 for value, _, _ in indicators.values() if value)
+    total_indicators = sum(len(cat_indicators) for cat_indicators in indicators.values())
+    true_indicators = sum(1 for category in indicators.values() for value, _, _ in category.values() if value)
+
     summary = (
         "- Analysis:\n"
         f"    Out of a total of {total_indicators} indicators analyzed, {true_indicators} "
