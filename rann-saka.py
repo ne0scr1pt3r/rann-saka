@@ -34,6 +34,7 @@ import time
 import os
 import sys
 import textwrap
+import random
 
 current_time = time.ctime()
 
@@ -50,6 +51,15 @@ def conditional_weights_non_linear(key_indicator, related_indicators, base_facto
             value, tier, weight = indicators[ind]
             if value:
                 indicators[ind] = (value, tier, weight * ((base_factor - 0.25) ** tier))
+
+
+# function randomness for unpredictibility
+def apply_randomness(indicators):
+    for _, cat_indicators in indicators.items():
+        for indicator, (value, tier, weight) in cat_indicators.items():
+            random_factor = random.uniform(0.9, 1.1)
+            new_weight = weight * random_factor
+            cat_indicators[indicator] = (value, tier, new_weight)
 
 
 # Indicators for general evaluation
