@@ -54,10 +54,10 @@ def conditional_weights_non_linear(key_indicator, related_indicators, base_facto
 
 
 # function randomness for unpredictibility
-def apply_randomness(indicators):
+def randomness(indicators):
     for _, cat_indicators in indicators.items():
         for indicator, (value, tier, weight) in cat_indicators.items():
-            random_factor = random.uniform(0.9, 1.1)
+            random_factor = random.uniform(0.6, 1.5)
             new_weight = weight * random_factor
             cat_indicators[indicator] = (value, tier, new_weight)
 
@@ -166,6 +166,7 @@ def evaluate_general_indicators(base_tier_weights):
 
         conditional_weights_non_linear(key_indicator, related_indicators, 1.5, cat_indicators)
 
+    randomness(indicators)
     weighted_sum, weighted_percentage = calculate_hybrid_score(indicators, base_tier_weights)
     true_indicators_tier_1 = sum(1 for category in indicators.values() for _, tier, _ in category.values() if tier == 1)
     true_indicators_tier_2 = sum(1 for category in indicators.values() for _, tier, _ in category.values() if tier == 2)
