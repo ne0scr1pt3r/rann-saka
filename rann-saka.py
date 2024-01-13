@@ -85,9 +85,8 @@ def evaluate_general_indicators(base_tier_weights):
             "information or clarification)": (False, 1, 0.8),
             "Feedback based on rumor or speculation\n(Feedback that is not "
             "based on direct observation or evidence)": (False, 2, 0.9),
-            "Unconstructive feedback\n(Feedback that doesn't offer a clear path "
+            "Unconstructive feedback\n(Feedback that doesn't offer a clear path"
             "to improvement)": (False, 2, 1.0),
-            "Frequent criticism\n(Regular and persistent criticism)": (False, 1, 0.9),
             "Inconsistency\n(Lack of consistency in feedback or expectations)": (False, 2, 1.0),
             "Personal, not professional\n(Focus on personal attributes rather "
             "than professional performance)": (False, 2, 1.0),
@@ -133,6 +132,10 @@ def evaluate_general_indicators(base_tier_weights):
 
         # Management and Support
         'Management and Support': {
+            "Absence of support or advocacy in disputes or conflicts\n(A noticeable lack of "
+            "support or advocacy from supervisors or peers during conflicts)": (False, 3, 1.2),
+            "Selective enforcement of rules or policies\n(Instances where rules or policies "
+            "are applied inconsistently, targeting specific individuals)": (False, 2, 1.1),
             "Lack of support\n(Insufficient support or resources for the role)": (False, 1, 1.0),
             "Comparisons with others\n(Unfavorable comparisons with other "
             "colleagues)": (False, 1, 0.7)
@@ -239,9 +242,6 @@ def evaluate_cybersecurity_indicators(base_tier_weights):
             "Misinterpreted penetration testing actions\n"
             "(legitimate penetration testing activities perceived as malicious "
             "acts)": (False, 3, 1.1),
-            "Insufficient explanation of tools used\n"
-            "(Lack of clarity about the tools used in penetration testing)":
-            (False, 1, 0.8),
         },
         # reporting and documentation
         'Reporting and documentation': {
@@ -288,8 +288,6 @@ def evaluate_cybersecurity_indicators(base_tier_weights):
             "Contradictory witness statements\n"
             "(Conflicting accounts from different individuals)":
             (False, 2, 1.2),
-            "Inconsistent testimony from team members\n"
-            "(Differing accounts of events from team members)": (False, 2, 0.9),
             "Personal motives in professional accusations\n"
             "(Suspected personal biases influencing professional charges)":
             (False, 2, 1.0),
