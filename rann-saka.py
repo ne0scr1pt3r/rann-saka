@@ -166,6 +166,7 @@ def evaluate_general_indicators(base_tier_weights):
 
         conditional_weights_non_linear(key_indicator, related_indicators, 1.5, cat_indicators)
 
+    # calling the function for minimizing predictability
     randomness(indicators)
     weighted_sum, weighted_percentage = calculate_hybrid_score(indicators, base_tier_weights)
     true_indicators_tier_1 = sum(1 for category in indicators.values() for _, tier, _ in category.values() if tier == 1)
