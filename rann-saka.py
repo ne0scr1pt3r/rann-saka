@@ -225,6 +225,9 @@ def evaluate_cybersecurity_indicators(base_tier_weights):
             "Claims of data tampering without proof\n"
             "(Allegations of data alteration lacking substantiation)":
             (False, 2, 1.0),
+            "Unauthorized sharing of confidential information\n"
+            "(distributing sensitive information without authorization)":
+            (False, 3, 1.2),
             "Allegations of unauthorized network monitoring\n"
             "(claims of unauthorized surveillance or network monitoring without "
             "proof)": (False, 2, 1.0),
@@ -251,6 +254,9 @@ def evaluate_cybersecurity_indicators(base_tier_weights):
             "Lack of corroboration in security logs\n"
             "(Security logs that do not support the allegations made)":
             (False, 2, 1.2),
+            "Delayed incident reporting\n"
+            "(significantly late reporting of security incidents)":
+            (False, 2, 1.0),
             "Vague or ambiguous forensic analysis\n"
             "(Forensic findings that are unclear or open to interpretation)":
             (False, 2, 1.0),
