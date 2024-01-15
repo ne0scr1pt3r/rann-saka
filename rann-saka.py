@@ -85,11 +85,8 @@ def evaluate_general_indicators(base_tier_weights):
             "information or clarification)": (False, 1, 0.8),
             "Feedback based on rumor or speculation\n(Feedback that is not "
             "based on direct observation or evidence)": (False, 2, 0.9),
-            "Unconstructive feedback\n(Feedback that doesn't offer a clear path"
+            "Unconstructive feedback\n(Feedback that doesn't offer a clear path "
             "to improvement)": (False, 2, 1.0),
-            "Inconsistency\n(Lack of consistency in feedback or expectations)": (False, 2, 1.0),
-            "Personal, not professional\n(Focus on personal attributes rather "
-            "than professional performance)": (False, 2, 1.0),
             "Public criticism\n(Criticism delivered in a public setting)": (False, 1, 0.8),
             "No recognition of improvement\n(Ignoring or not acknowledging "
             "improvements made)": (False, 2, 0.9),
