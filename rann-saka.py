@@ -65,7 +65,6 @@ def randomness(indicators):
 # Indicators for general evaluation
 def evaluate_general_indicators(base_tier_weights):
     indicators = {
-        # Feedback and communication
         'Feedback and communication': {
             "Consistent negative feedback\n(Frequent negative feedback, "
             "regardless of performance or improvement)": (False, 3, 1.3),
@@ -93,7 +92,6 @@ def evaluate_general_indicators(base_tier_weights):
             "Feedback contrary to previous evaluations\n(Feedback that "
             "contradicts earlier evaluations)": (False, 3, 1.2)
         },
-        # career impact and professionalism
         'Career impact and professionalism': {
             "Decline in job offers\n(Noticeable decrease in job offers or "
             "opportunities)": (False, 3, 1.4),
@@ -109,7 +107,6 @@ def evaluate_general_indicators(base_tier_weights):
             "Timing of the accusations or feedback\n(Feedback timing that may "
             "have ulterior motives or context)": (False, 1, 0.8)
         },
-        # authenticity and credibility
         'Authenticity and credibility': {
             "Lack of credibility\n(Feedback or instructions lack grounding in "
             "facts or reality)": (False, 3, 1.3),
@@ -127,7 +124,6 @@ def evaluate_general_indicators(base_tier_weights):
             "actions or performance)": (False, 2, 0.9)
         },
 
-        # Management and Support
         'Management and Support': {
             "Absence of support or advocacy in disputes or conflicts\n(A noticeable lack of "
             "support or advocacy from supervisors or peers during conflicts)": (False, 3, 1.2),
@@ -212,7 +208,6 @@ def evaluate_general_indicators(base_tier_weights):
 # Indicators for specific cybersecurity evaluation
 def evaluate_cybersecurity_indicators(base_tier_weights):
     indicators = {
-        # authorization and access control
         'Authorization and access control': {
             "Unsubstantiated accusations of malicious activity\n"
             "(Accusations without concrete proof)": (False, 3, 1.3),
@@ -243,7 +238,6 @@ def evaluate_cybersecurity_indicators(base_tier_weights):
             "(legitimate penetration testing activities perceived as malicious "
             "acts)": (False, 3, 1.1),
         },
-        # reporting and documentation
         'Reporting and documentation': {
             "Discrepancies in incident reports\n"
             "(Conflicting information in reports of security incidents)":
@@ -266,7 +260,6 @@ def evaluate_cybersecurity_indicators(base_tier_weights):
             "(Audit data that is unclear or misread)":
             (False, 1, 0.9),
         },
-        # conduct and misunderstandings
         'Conduct and misunderstandings': {
             "Misconstrued intentions in security testing\n"
             "(misinterpretation of security testing procedures as harmful "
@@ -283,7 +276,6 @@ def evaluate_cybersecurity_indicators(base_tier_weights):
             "(Unsupported legal threats over alleged actions)":
             (False, 3, 1.3),
         },
-        # team dynamics and communication
         'Team dynamics and communication': {
             "Impact of accusations on professional reputation\n"
             "(Allegations that could harm one's professional standing)":
